@@ -1,0 +1,9 @@
+# Static files i.e. CSS, JS, IMG
+static/*
+
+# Settings files
+settings.py
+
+# Caching
+*.pyc
+*.swp
