@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from portfolio.models import Post
 
 # Create your views here.
 def home(request):
-    return HttpResponse("<h1>Hello World</h1>")
+    posts = Post.objects.all()
+    return render(request, 'home.html', { 'posts': posts })

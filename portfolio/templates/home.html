@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block homesmall %}active{% endblock homesmall %}
+{% block homelarge %}active{% endblock homelarge %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'home/css/home.css' %}">
+{% endblock css %}
+
+{% block js %}
+{% endblock js %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+<div id="about" class="container d-flex flex-column justify-content-between">
+    <div class="d-flex flex-column flex-md-row">
+        <img class="shadow border-2 face-img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.biography.com%2F.image%2Ft_share%2FMTIwNjA4NjM0MTI0NTM1MzA4%2Fguy-fieri-101311-1-402.jpg&f=1&nofb=1" width="192" height="192"/>
+        <div class="m-3 p-4 flex-grow">
+            <h1><b>About</b></h1>
+            <p class="p-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+    </div>
+    <div class="m-2 p-2 d-flex flex-column align-items-center">
+        <button class="btn btn-primary w-75 btn-lg py-3 rounded">Projects</button>
+        <ul class="list-unstyled d-flex justify-content-center">
+            <li class="mx-2 p-2"><a class="link-dark" href="twitter.com/seth_brittain"><i class="fab fa-3x fa-twitter"></i></a></li>
+            <li class="mx-2 p-2"><a class="link-dark" href="#"><i class="fab fa-3x fa-github"></i></a></li>
+            <li class="mx-2 p-2"><a class="link-dark" href="#"><i class="fab fa-3x fa-linkedin"></i></a></li>
+        </ul>
+    </div>
+</div>
+<div id="blog" class="container">
+    <div class="h3 border-bottom p-2 pl-1 m-2 mb-4">Updates</div>
+    <div class="px-3">
+        {% for post in posts %}
+            {% include "blocks/blog_post.html" %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

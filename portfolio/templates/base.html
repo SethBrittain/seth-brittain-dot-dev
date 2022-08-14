@@ -1,0 +1,85 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- load base css -->
+        <link rel="stylesheet" type="text/css" href="{% static 'base/css/bootstrap.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'base/css/open-iconic.css' %}" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'base/css/base.css' %}"/>
+        {% block css%}{% endblock %}
+
+        <!-- load base js -->
+        <script src="{% static 'base/js/bootstrap.bundle.js' %}"></script>
+        <script src="{% static 'base/js/jquery.js' %}"></script>
+        <script src="{% static 'base/js/base.js' %}"></script>
+        {% block js%}{% endblock %}
+
+        <!-- title block -->
+        <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+        <title>{% block title %}{% endblock %}</title>
+    </head>
+    <body>
+        <div id="page" class="d-flex flex-column">
+            <div class="topnav row shadow">
+                <div class="container border-bottom">
+                    <header id="header" class="d-block d-md-flex justify-content-between align-items-center my-3">
+                        <div class="m-2 mx-4 d-flex justify-content-between align-items-center">
+                            <h1 class="d-inline"><b>SethBrittain.dev</b></h1>
+                            <button type="button" class="btn btn-light nav-toggle d-inline d-md-none border">
+                                <span class="oi d-block align-middle ham-icon mr-2" data-glyph="menu" title="menu" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                        <ul class="nav nav-pills small-nav-list d-block d-md-none align-items-center overflow-hidden position-relative">
+                            <li class="nav-item"><a class="nav-link {% block homesmall %}{% endblock homesmall %}" href="/">Home</a></li>
+                            <li class="nav-item"><a class="nav-link {% block aboutsmall %}{% endblock aboutsmall %}" href="#about">About</a></li>
+                            <li class="nav-item"><a class="nav-link {% block contactsmall %}{% endblock contactsmall %}" href="#contact">Contact</a></li>
+                            <li class="nav-item"><a class="nav-link {% block blogsmall %}{% endblock blogsmall %}" href="#blog">Updates</a></li>
+                            <li class="nav-item"><a class="nav-link {% block projectssmall %}{% endblock projectssmall %}" href="#projects">Projects</a></li>
+                        </ul>
+                        <ul class="nav nav-pills large-nav-list d-none d-md-flex align-items-center">
+                            <li class="nav-item"><a class="nav-link {% block homelarge %}{% endblock homelarge %}" href="/">Home</a></li>
+                            <li class="nav-item"><a class="nav-link {% block aboutlarge %}{% endblock aboutlarge %}" href="#about">About</a></li>
+                            <li class="nav-item"><a class="nav-link {% block contactlarge %}{% endblock contactlarge %}" href="#contact">Contact</a></li>
+                            <li class="nav-item"><a class="nav-link {% block bloglarge %}{% endblock bloglarge %}" href="#blog">Updates</a></li>
+                            <li class="nav-item"><a class="nav-link {% block projectslarge %}{% endblock projectslarge %}" href="#projects">Projects</a></li>
+                        </ul>
+                    </header>
+                </div>
+            </div>
+            <!-- content block -->
+            <div class="pt-4 container flex-grow-1">
+                {% block content %}{% endblock content %}
+            </div>
+            <div class="container">
+                <footer class="py-5 mx-2">
+                    <div class="row">
+                        <div class="col-6 col-md-2">
+                            <h5>Quick Links</h5>
+                            <ul class="nav flex-column">
+                                <li class="nav-item"><a href="#" class="nav-link my-0 pt-1 pb-0 text-muted">Home</a></li>
+                                <li class="nav-item"><a href="#" class="nav-link my-0 pt-1 pb-0 text-muted">Blog</a></li>
+                                <li class="nav-item"><a href="#" class="nav-link my-0 pt-1 pb-0 text-muted">About</a></li>
+                                <li class="nav-item"><a href="#" class="nav-link my-0 pt-1 pb-0 text-muted">Contact</a></li>
+                                <li class="nav-item"><a href="#" class="nav-link my-0 pt-1 pb-0 text-muted">About pt2</a></li>
+                            </ul>
+                        </div>
+                        <div class="d-flex flex-row-reverse pt-4 mt-4 border-top">
+                            <ul class="list-unstyled d-flex">
+                                <li class="ms-3"><a class="link-dark" href="twitter.com/seth_brittain"><i class="fab fa-2x fa-twitter"></i></a></li>
+                                <li class="ms-3"><a class="link-dark" href="#"><i class="fab fa-2x fa-github"></i></a></li>
+                                <li class="ms-3"><a class="link-dark" href="#"><i class="fab fa-2x fa-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </body>
+</html>
