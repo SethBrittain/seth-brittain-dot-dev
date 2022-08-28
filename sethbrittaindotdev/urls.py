@@ -19,5 +19,6 @@ import portfolio.views as portfolio
 
 urlpatterns = [
     path('', portfolio.home),
+    path('mail', portfolio.mail),
     path('admin/', admin.site.urls)
 ]

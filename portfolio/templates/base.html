@@ -26,29 +26,25 @@
         <title>{% block title %}{% endblock %}</title>
     </head>
     <body>
-        <div id="page" class="d-flex flex-column">
-            <div class="topnav row shadow">
+        <div id="page">
+            <div class="topnav shadow">
                 <div class="container border-bottom">
-                    <header id="header" class="d-block d-md-flex justify-content-between align-items-center my-3">
-                        <div class="m-2 mx-4 d-flex justify-content-between align-items-center">
-                            <h1 class="d-inline"><b>SethBrittain.dev</b></h1>
-                            <button type="button" class="btn btn-light nav-toggle d-inline d-md-none border">
+                    <header id="header" class="d-block d-md-flex justify-content-between align-items-center m-0 p-3">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a class="d-inline h3 m-0 p-1 nav-link text-decoration-none" id="home-button" href="#"><b>SethBrittain.dev</b></a>
+                            <button type="button" id="hamburger" class="btn btn-light nav-toggle d-inline d-md-none border">
                                 <span class="oi d-block align-middle ham-icon mr-2" data-glyph="menu" title="menu" aria-hidden="true"></span>
                             </button>
                         </div>
                         <ul class="nav nav-pills small-nav-list d-block d-md-none align-items-center overflow-hidden position-relative">
-                            <li class="nav-item"><a class="nav-link {% block homesmall %}{% endblock homesmall %}" href="/">Home</a></li>
-                            <li class="nav-item"><a class="nav-link {% block aboutsmall %}{% endblock aboutsmall %}" href="#about">About</a></li>
-                            <li class="nav-item"><a class="nav-link {% block contactsmall %}{% endblock contactsmall %}" href="#contact">Contact</a></li>
-                            <li class="nav-item"><a class="nav-link {% block blogsmall %}{% endblock blogsmall %}" href="#blog">Updates</a></li>
-                            <li class="nav-item"><a class="nav-link {% block projectssmall %}{% endblock projectssmall %}" href="#projects">Projects</a></li>
+                            <li class="nav-item"><a class="nav-link text-primary" href="#">About</a></li>
+                            <li class="nav-item"><a class="nav-link text-primary" href="#projects">Projects</a></li>
+                            <li class="nav-item"><a class="nav-link text-primary" href="#contact">Contact</a></li>
                         </ul>
                         <ul class="nav nav-pills large-nav-list d-none d-md-flex align-items-center">
-                            <li class="nav-item"><a class="nav-link {% block homelarge %}{% endblock homelarge %}" href="/">Home</a></li>
-                            <li class="nav-item"><a class="nav-link {% block aboutlarge %}{% endblock aboutlarge %}" href="#about">About</a></li>
-                            <li class="nav-item"><a class="nav-link {% block contactlarge %}{% endblock contactlarge %}" href="#contact">Contact</a></li>
-                            <li class="nav-item"><a class="nav-link {% block bloglarge %}{% endblock bloglarge %}" href="#blog">Updates</a></li>
-                            <li class="nav-item"><a class="nav-link {% block projectslarge %}{% endblock projectslarge %}" href="#projects">Projects</a></li>
+                            <li class="nav-item"><a class="nav-link text-primary" href="#">About</a></li>
+                            <li class="nav-item"><a class="nav-link text-primary" href="#projects">Projects</a></li>
+                            <li class="nav-item"><a class="nav-link text-primary" href="#contact">Contact</a></li>
                         </ul>
                     </header>
                 </div>

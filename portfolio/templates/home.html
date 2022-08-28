@@ -1,44 +1,91 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block homesmall %}active{% endblock homesmall %}
-{% block homelarge %}active{% endblock homelarge %}
-
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{% static 'home/css/home.css' %}">
 {% endblock css %}
 
 {% block js %}
+<script src="{% static 'home/js/home.js' %}"></script>
 {% endblock js %}
 
-{% block title %}Home{% endblock title %}
+{% block title %}Seth Brittain{% endblock title %}
 
 {% block content %}
-<div id="about" class="container d-flex flex-column justify-content-between">
-    <div class="d-flex flex-column flex-md-row">
-        <img class="shadow border-2 face-img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.biography.com%2F.image%2Ft_share%2FMTIwNjA4NjM0MTI0NTM1MzA4%2Fguy-fieri-101311-1-402.jpg&f=1&nofb=1" width="192" height="192"/>
-        <div class="m-3 p-4 flex-grow">
-            <h1><b>About</b></h1>
-            <p class="p-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<div id="about" class="container d-flex flex-column-reverse flex-md-row-reverse justify-content-between">
+    <div class="col-sm-12 col-md-6 m-3 p-4">
+        <h1 class="text-center text-md-start"><b>About Me</b></h1>
+        <p class="py-3 fs-6 fs-md-4 text-center text-md-start">
+            My name is Seth Brittain. I am a web developer who creates reponsive websites and web apps.
+            I am skilled in backend and fronted frameworks including SpringBoot, Angular, ASP.NET, Django, 
+            and Symfony. I also have experience in relational databases like PostgreSQL and MySQL.
+        </p>
+    </div>
+    <div class="col-sm-12 col-md-6 m-2 p-2 d-flex flex-column align-items-center">
+        <!--<h1 class="d-block text-center title-decor">&lt;Seth&gt;</h1>-->
+        <h1 class="d-block text-center title-decor">&lt;Seth/&gt;</h1>
+        <ul class="list-unstyled d-flex justify-content-center">
+            <li class="mx-2 p-2"><a class="link-dark" href="https://www.twitter.com/seth_brittain"><i class="fab fa-3x fa-twitter"></i></a></li>
+            <li class="mx-2 p-2"><a class="link-dark" href="https://www.github.com/sethbrittain"><i class="fab fa-3x fa-github"></i></a></li>
+            <li class="mx-2 p-2"><a class="link-dark" href="https://www.linkedin.com/in/sethbrittain"><i class="fab fa-3x fa-linkedin"></i></a></li>
+        </ul>
+        <div class="text-center w-75">
+            <span class="d-inline-block badge rounded-pill bg-dark mb-1 fs-5">PHP</span>
+            <span class="d-inline-block badge rounded-pill bg-dark mb-1 fs-5">Javascript</span>
+            <span class="d-inline-block badge rounded-pill bg-dark mb-1 fs-5">HTML/CSS</span>
+            <span class="d-inline-block badge rounded-pill bg-dark mb-1 fs-5">Python</span>
+            <span class="d-inline-block badge rounded-pill bg-dark mb-1 fs-5">SQL</span>
+            <span class="d-inline-block badge rounded-pill bg-dark mb-1 fs-5">C#</span>
+            <span class="d-inline-block badge rounded-pill bg-dark mb-1 fs-5">Java</span>
         </div>
     </div>
-    <div class="m-2 p-2 d-flex flex-column align-items-center">
-        <button class="btn btn-primary w-75 btn-lg py-3 rounded">Projects</button>
-        <ul class="list-unstyled d-flex justify-content-center">
-            <li class="mx-2 p-2"><a class="link-dark" href="twitter.com/seth_brittain"><i class="fab fa-3x fa-twitter"></i></a></li>
-            <li class="mx-2 p-2"><a class="link-dark" href="#"><i class="fab fa-3x fa-github"></i></a></li>
-            <li class="mx-2 p-2"><a class="link-dark" href="#"><i class="fab fa-3x fa-linkedin"></i></a></li>
-        </ul>
-    </div>
 </div>
-<div id="blog" class="container">
-    <div class="h3 border-bottom p-2 pl-1 m-2 mb-4">Updates</div>
-    <div class="px-3">
-        {% for post in posts %}
-        {% if post.status == 1 %}
-            {% include "blocks/blog_post.html" %}
+<div id="projects" class="container">
+    <div class="h3 border-bottom p-2 pl-1 m-2 mb-4">Projects</div>
+    <div class="p-3 row">
+        {% if projects|length > 0 %}
+            {% for project in projects %}
+                {% if project.status == 1 %} {% include "blocks/project.html" %} {% endif %}
+            {% endfor %}
+        {% else %}
+            <p class="text-center">Oops... looks like there's nothing here.</p>
         {% endif %}
-        {% endfor %}
+    </div>
+    {% if projects|length > 3 %}
+    <div class="text-center updates-expand px-0 mx-0">Show More</div>
+    {% endif %}
+</div>
+<div id="contact" class="container">
+    <div class="h3 border-bottom p-2 pl-1 m-2 mb-4">Contact</div>
+    <div class="p-3 mx-4">
+        <form class="row" action="/mail" method="post">
+            {% csrf_token %}
+            <div class="col-md-6 d-flex flex-column flex-md-row pb-2">
+                <label class="required col-md-5">First Name:&nbsp;</label><div class="flex-grow-1 d-inline-block"><input class="form-control" name="firstname" required type="text" aria-label="Small"></div>
+            </div>
+            <div class="col-md-6 d-flex flex-column flex-md-row pb-2">
+                <label class="required col-md-5">Last Name:&nbsp;</label><div class="flex-grow-1 d-inline-block"><input class="form-control" name="lastname" required type="text" aria-label="Small" ></div>
+            </div>
+            <div class="col-md-6 d-flex flex-column flex-md-row pb-2">
+                <label class="required col-md-5">Email Address:&nbsp;</label><div class="flex-grow-1 d-inline-block"><input class="form-control" name="email" required type="text" aria-label="Small" ></div>
+            </div>
+            <div class="col-md-6 d-flex flex-column flex-md-row pb-2">
+                <label class="col-md-5">Company:&nbsp;</label><div class="flex-grow-1 d-inline-block"><input class="form-control" name="company" type="text" aria-label="Small" ></div>
+            </div>
+            <div class="col-md-6 d-flex flex-column flex-md-row pb-2">
+                <label class="col-md-5">Subject:&nbsp;</label><div class="flex-grow-1 d-inline-block"><input class="form-control" name="subject" required type="text" aria-label="Small" ></div>
+            </div>
+            <div class="col-md-12 pt-3">
+                <label class="required font-weight-bold mb-2">Message:&nbsp;</label>
+                <textarea class="form-control message-body" name="body" required aria-label="Small" placeholder="Message Body"></textarea>
+            </div>
+            <div class="visually-hidden p-2">
+                <input class="form-control required" name="address" type="text" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+            </div>
+            <div class="p-2 d-flex flex-row-reverse">
+                <button class="btn btn-primary" type="submit">Send</button>
+            </div>
+        </form>
     </div>
 </div>
 {% endblock content %}
